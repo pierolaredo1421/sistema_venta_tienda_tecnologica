@@ -16,6 +16,7 @@ public class ProductoService {
     }
 
     public void agregarProducto(String nombre, String marca, double precioSinIgv) throws ProductoException {
+
         double precioConIgv = precioSinIgv * 1.18;
         Producto producto = ProductoFactory.createProducto(nombre, marca, precioConIgv);
         productoRepository.registrarProducto(producto);
@@ -24,7 +25,8 @@ public class ProductoService {
     public void agregarProducto(Productos productoEnum) throws ProductoException {
         double precioConIgv = productoEnum.getPrecio() * 1.18;
         Producto producto = ProductoFactory.createProducto(
-                new Productos(productoEnum.getNombre(), productoEnum.getMarca(), precioConIgv));
+                productoEnum.getNombre(), productoEnum.getMarca(), precioConIgv
+        );
         productoRepository.registrarProducto(producto);
     }
 

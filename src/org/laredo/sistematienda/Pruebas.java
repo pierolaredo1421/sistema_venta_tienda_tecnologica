@@ -33,11 +33,14 @@ public class Pruebas {
             productoService.agregarProducto("iPhone 15", "Apple", 1000);
             productoService.agregarProducto("Kumara K552", "Redragon", 100);
             productoService.agregarProducto(Productos.LOGITECH);
+            productoService.agregarProducto(Productos.JBL);
+            productoService.agregarProducto(Productos.SONY);
+            productoService.agregarProducto(Productos.REDRAGON);
 
             List<Producto> listaProductos = new ArrayList<>();
             String id;
-
             do {
+                System.out.println(productoService.listarProductos());
                 System.out.print("Ingrese el id del producto (0 para terminar): ");
                 id = sc.nextLine();
                 if (!id.equals("0")) {
@@ -48,7 +51,7 @@ public class Pruebas {
 
             if (!listaProductos.isEmpty()) {
                 facturaService.facturar(usuario, listaProductos);
-                // Aquí deberías buscar el id real de la factura creada; 26457 es ejemplo.
+                // Aquí deberías buscar él id real de la factura creada; 26457 es ejemplo.
                 Factura factura = facturaService.buscarFactura(26457);
                 System.out.println(factura);
             } else {

@@ -17,7 +17,7 @@ public class FacturaService {
         this.facturaRepository = facturaRepository;
     }
 
-    public void facturar(Usuario usuario, List<Producto> productos) {
+    public void registrarFactura(Usuario usuario, List<Producto> productos) {
         Factura factura = FacturaFactory.registrarFactura(usuario, productos);
         facturaRepository.registrarFactura(factura);
     }
@@ -29,7 +29,4 @@ public class FacturaService {
     public Collection<Factura> listarFacturas() {
         return facturaRepository.listarFacturas();
     }
-
-    //MÉTODO DESCUENTO
-
 }

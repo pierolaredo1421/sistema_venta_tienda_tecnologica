@@ -14,6 +14,9 @@ public class UsuarioService {
     }
 
     public void crearUsuario(Usuario usuario) throws UsuarioException {
+        if (usuarioRepository.buscarUsuario(usuario.getDni()).isPresent()) {
+            throw new UsuarioException("El usuario ya existe");
+        }
         usuarioRepository.registrarUsuario(usuario);
     }
 
@@ -24,5 +27,6 @@ public class UsuarioService {
 
     public Collection<Usuario> listarUsuarios() throws UsuarioException {
         return usuarioRepository.listaUsuarios();
+
     }
 }

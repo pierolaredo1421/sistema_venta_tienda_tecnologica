@@ -19,13 +19,14 @@ public class Factura {
     private double calcularTotal() {
         double descuento = 0;
         int cantidad = productos.size();
-        if (cantidad >= 2 && cantidad <= 4) descuento = 0.05;
+        if (cantidad < 2) descuento = 0;
+        else if (cantidad <= 4) descuento = 0.05;
         else if (cantidad <= 9) descuento = 0.085;
         else descuento = 0.12;
 
         double finalDescuento = descuento;
         return productos.stream()
-                .mapToDouble(p -> p.getPrecio() * (1 - finalDescuento))
+                .mapToDouble(p -> p.getPrecio() - (p.getPrecio() * finalDescuento))
                 .sum();
     }
 
