@@ -1,6 +1,8 @@
 package org.laredo.sistematienda.model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class Factura {
@@ -47,18 +49,51 @@ public class Factura {
         return Objects.hash(idFactura);
     }
 
+    // ... resto de la clase Factura
+
+    private String resumenAdaptadoresBluetooth() {
+        // Contar cantidad por marca
+        Map<String, Integer> conteo = new HashMap<>();
+        for (Producto p : productos) {
+            conteo.put(p.getMarca().toLowerCase(), conteo.getOrDefault(p.getMarca().toLowerCase(), 0) + 1);
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("Adaptadores Bluetooth de regalo:\n");
+        for (Map.Entry<String, Integer> entry : conteo.entrySet()) {
+            String marca = entry.getKey();
+            int cantidad = entry.getValue();
+            int adaptadores = 0;
+            switch (marca) {
+                case "sony" -> adaptadores = cantidad / 2;
+                case "jbl" -> adaptadores = (cantidad / 3) * 2;
+                case "logitech" -> adaptadores = cantidad;
+                case "redragon" -> adaptadores = cantidad * 2;
+            }
+            if (adaptadores > 0) {
+                sb.append(" - ").append(capitalize(marca)).append(": ").append(adaptadores).append("\n");
+            }
+        }
+        return sb.toString();
+    }
+
+    private String capitalize(String str) {
+        if (str == null || str.isEmpty()) return str;
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("Factura N°").append(idFactura).append("\n")
-                .append("Usuario: ").append(usuario.getNombre()).append("\n")
-                .append("Productos:\n");
+        StringBuilder sb = new StringBuilder("Factura N°" + idFactura).append("\n");
+        sb.append("Usuario: ").append(usuario.getNombre()).append("\n");
+        sb.append("Productos: \n");
         for (Producto producto : productos) {
             sb.append(producto.getMarca()).append(" ")
                     .append(producto.getNombre()).append(" - ")
                     .append(producto.getPrecio()).append("\n");
         }
-        sb.append("IGV 18%\n")
-                .append("Total: ").append(total).append("\n");
+        sb.append(resumenAdaptadoresBluetooth());
+        sb.append("IGV 18%").append("\n")
+                .append("Total: ").append(this.total).append("\n");
         return sb.toString();
     }
 }

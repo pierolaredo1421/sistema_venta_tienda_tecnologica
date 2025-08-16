@@ -50,7 +50,7 @@ public class Pruebas {
             } while (!id.equals("0"));
 
             if (!listaProductos.isEmpty()) {
-                facturaService.facturar(usuario, listaProductos);
+                facturaService.registrarFactura(usuario, listaProductos);
                 // Aquí deberías buscar él id real de la factura creada; 26457 es ejemplo.
                 Factura factura = facturaService.buscarFactura(26457);
                 System.out.println(factura);
