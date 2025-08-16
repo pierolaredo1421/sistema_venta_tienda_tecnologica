@@ -17,9 +17,9 @@ public class FacturaService {
         this.facturaRepository = facturaRepository;
     }
 
-    public void registrarFactura(Usuario usuario, List<Producto> productos) {
+    public Factura registrarFactura(Usuario usuario, List<Producto> productos) {
         Factura factura = FacturaFactory.registrarFactura(usuario, productos);
-        facturaRepository.registrarFactura(factura);
+        return facturaRepository.registrarFactura(factura);
     }
 
     public Factura buscarFactura(int idFactura) throws FacturaExceptions {

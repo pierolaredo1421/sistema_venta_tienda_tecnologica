@@ -55,8 +55,8 @@ public class SistemaController {
     }
 
     //FACTURA
-    public void registrarFactura(Usuario usuario, List<Producto> productos) throws FacturaExceptions {
-        facturaService.registrarFactura(usuario, productos);
+    public Factura registrarFactura(Usuario usuario, List<Producto> productos) throws FacturaExceptions {
+        return facturaService.registrarFactura(usuario, productos);
     }
 
     public Factura encontrarFactura(int idFactura) throws FacturaExceptions {

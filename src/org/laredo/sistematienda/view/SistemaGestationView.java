@@ -21,7 +21,6 @@ public class SistemaGestationView {
         this.controller = controller;
     }
 
-
     public void mostrarMenuPrincipal() {
         int opcion;
         do {
@@ -38,8 +37,8 @@ public class SistemaGestationView {
                 case 2 -> menuProductos();
                 case 3 -> crearFactura();
                 case 4 -> listarFacturas();
-                case 0 -> System.out.println("¡Hasta luego!");
-                default -> System.out.println("Opción no válida.");
+                case 0 -> System.out.println("Hasta luego!");
+                default -> System.out.println("Opción no válida");
             }
         } while (opcion != 0);
     }
@@ -59,7 +58,7 @@ public class SistemaGestationView {
                 case 1 -> registrarUsuario();
                 case 2 -> buscarUsuario();
                 case 0 -> {}
-                default -> System.out.println("Opción no válida.");
+                default -> System.out.println("Opción no válida");
             }
         } while (opcion != 0);
     }
@@ -81,7 +80,7 @@ public class SistemaGestationView {
                 case 3 -> buscarProducto();
                 case 4 -> eliminarProducto();
                 case 0 -> {}
-                default -> System.out.println("Opción no válida.");
+                default -> System.out.println("Opción no válida");
             }
         } while (opcion != 0);
     }
@@ -93,7 +92,7 @@ public class SistemaGestationView {
             System.out.print("Nombre: ");
             String nombre = scanner.nextLine();
             controller.registrarUsuario(new Usuario(dni, nombre));
-            System.out.println("Usuario registrado correctamente.");
+            System.out.println("Usuario registrado correctamente");
         } catch (UsuarioException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -119,7 +118,7 @@ public class SistemaGestationView {
             System.out.print("Precio: ");
             double precio = leerDouble();
             controller.registrarProducto(nombre, marca, precio);
-            System.out.println("Producto agregado correctamente.");
+            System.out.println("Producto agregado correctamente");
         } catch (ProductoException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -151,7 +150,7 @@ public class SistemaGestationView {
             System.out.print("ID producto a eliminar: ");
             String id = scanner.nextLine();
             controller.eliminarProducto(id);
-            System.out.println("Producto eliminado.");
+            System.out.println("Producto eliminado");
         } catch (ProductoException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -174,7 +173,7 @@ public class SistemaGestationView {
                     Producto producto = controller.encontrarProducto(id);
                     productosCompra.add(producto);
                 } catch (ProductoException e) {
-                    System.out.println("Producto no encontrado. Intente de nuevo.");
+                    System.out.println("Producto no encontrado. Intente de nuevo");
                 }
             }
 
@@ -201,14 +200,13 @@ public class SistemaGestationView {
         }
     }
 
-    // --- Métodos utilitarios para leer datos ---
     private int leerEntero() {
         while (!scanner.hasNextInt()) {
             System.out.print("Ingrese un número válido: ");
             scanner.next();
         }
         int valor = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine();
         return valor;
     }
 
@@ -218,7 +216,7 @@ public class SistemaGestationView {
             scanner.next();
         }
         double valor = scanner.nextDouble();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine();
         return valor;
     }
 }

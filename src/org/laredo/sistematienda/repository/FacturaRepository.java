@@ -7,8 +7,8 @@ import java.util.*;
 public class FacturaRepository {
     private final Map<Integer, Factura> facturas = new HashMap<>();
 
-    public void registrarFactura(Factura factura) {
-        facturas.put(factura.getIdFactura(), factura);
+    public Factura registrarFactura(Factura factura) {
+        return facturas.put(factura.getIdFactura(), factura);
     }
 
     public Optional<Factura> buscarFactura(int idFactura) {
