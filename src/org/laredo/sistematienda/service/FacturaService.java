@@ -18,8 +18,8 @@ public class FacturaService {
     }
 
     public void facturar(Usuario usuario, List<Producto> productos) {
-        Factura factura = FacturaFactory.facturacion(usuario, productos);
-        facturaRepository.factura(factura);
+        Factura factura = FacturaFactory.registrarFactura(usuario, productos);
+        facturaRepository.registrarFactura(factura);
     }
 
     public Factura buscarFactura(int idFactura) throws FacturaExceptions {

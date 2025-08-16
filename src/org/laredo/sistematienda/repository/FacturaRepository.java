@@ -2,19 +2,16 @@ package org.laredo.sistematienda.repository;
 
 import org.laredo.sistematienda.model.Factura;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class FacturaRepository {
-    private Map<Integer, Factura> facturas = new HashMap<>();
+    private final Map<Integer, Factura> facturas = new HashMap<>();
 
-    public void factura (Factura factura) {
+    public void registrarFactura(Factura factura) {
         facturas.put(factura.getIdFactura(), factura);
     }
 
-    public Optional<Factura> buscarFactura (int idFactura) {
+    public Optional<Factura> buscarFactura(int idFactura) {
         return Optional.ofNullable(facturas.get(idFactura));
     }
 

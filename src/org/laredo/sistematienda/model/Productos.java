@@ -1,18 +1,22 @@
 package org.laredo.sistematienda.model;
 
 public enum Productos {
-    Sony (120),
-    JBL(135.5),
-    Logitech(98.75),
-    Redragon(110);
+    SONY("Sony", "Sony", 120),
+    JBL("JBL", "JBL", 135.5),
+    LOGITECH("Logitech", "Logitech", 98.75),
+    REDRAGON("Redragon", "Redragon", 110);
 
-    double precio;
+    private final String nombre;
+    private final String marca;
+    private final double precio;
 
-    Productos(double precio){
+    Productos(String nombre, String marca, double precio){
+        this.nombre = nombre;
+        this.marca = marca;
         this.precio = precio;
     }
 
-    public double getPrecio(){
-        return precio;
-    }
+    public String getNombre() { return nombre; }
+    public String getMarca() { return marca; }
+    public double getPrecio() { return precio; }
 }

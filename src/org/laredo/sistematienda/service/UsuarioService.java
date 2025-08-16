@@ -7,7 +7,7 @@ import org.laredo.sistematienda.repository.UsuarioRepository;
 import java.util.Collection;
 
 public class UsuarioService {
-    private UsuarioRepository usuarioRepository;
+    private final UsuarioRepository usuarioRepository;
 
     public UsuarioService(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
@@ -18,7 +18,8 @@ public class UsuarioService {
     }
 
     public Usuario buscarUsuario(int dni) throws UsuarioException {
-        return usuarioRepository.buscarUsuario(dni).orElseThrow(() -> new UsuarioException("Usuario no encontrado"));
+        return usuarioRepository.buscarUsuario(dni)
+                .orElseThrow(() -> new UsuarioException("Usuario no encontrado"));
     }
 
     public Collection<Usuario> listarUsuarios() throws UsuarioException {

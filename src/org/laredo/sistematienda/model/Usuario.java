@@ -3,8 +3,8 @@ package org.laredo.sistematienda.model;
 import java.util.Objects;
 
 public class Usuario {
-    private int dni;
-    private String nombre;
+    private final int dni;
+    private final String nombre;
 
     public Usuario(int dni, String nombre) {
         this.dni = dni;
@@ -22,20 +22,20 @@ public class Usuario {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Usuario usuario = (Usuario) o;
+        if (!(o instanceof Usuario usuario)) return false;
         return dni == usuario.dni;
     }
 
     @Override
-    public String toString() {
-        return "Usuario{" + "dni=" + dni + ", nombre='" + nombre + '\'' + '}';
+    public int hashCode() {
+        return Objects.hash(dni);
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hashCode(dni);
+    public String toString() {
+        return "Usuario{" +
+                "dni=" + dni +
+                ", nombre='" + nombre + '\'' +
+                '}';
     }
 }
-
-

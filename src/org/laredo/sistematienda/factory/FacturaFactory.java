@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class FacturaFactory {
     private static final AtomicInteger generadorId = new AtomicInteger(26457);
 
-    public static Factura facturacion(Usuario usuario, List<Producto> productos) {
+    public static Factura registrarFactura(Usuario usuario, List<Producto> productos) {
         int id = generadorId.getAndIncrement();
         return new Factura(id, usuario, productos);
     }
